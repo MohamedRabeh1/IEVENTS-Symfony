@@ -1,107 +1,148 @@
-I-EVENTS - Application Desktop JavaFX 🖥️
-Description du Projet 🗒️
-I-EVENTS Desktop est une application de bureau développée avec JavaFX, destinée à compléter l’application web Symfony. Elle permet aux administrateurs et organisateurs de gérer les aspects essentiels des événements à partir d’une interface native et fluide.
+# **I-EVENTS - Gestion des évenements **
 
-Contexte : ✨
+## Description du Projet 🗒️ 
 
-Afin d’offrir une expérience multiplateforme aux utilisateurs et une meilleure gestion hors ligne ou en environnement local, nous avons développé une version desktop de I-EVENTS. Cette application JavaFX vise à fournir des outils ergonomiques pour gérer les événements, les utilisateurs, les équipements, les réclamations et les réservations avec des interfaces dédiées et des statistiques interactives.
+**I-EVENTS** est une application web développée avec **Symfony 6.4** et **PHP 8.2**, conçue pour simplifier la gestion des evenements  pour les utilisateurs et organisateurs.
 
-Fonctionnalités principales :
+**Contexte :**  ✨
 
-Gestion des utilisateurs : CRUD, tri/recherche dynamique, affichage dans des tableaux interactifs (TableView), statistiques graphiques via JavaFX Chart.
-Gestion des événements : CRUD, calendrier intégré, synchronisation avec Google Calendar, affichage des événements passés/à venir.
-Gestion des réclamations : CRUD, filtrage intelligent, détection automatique de la langue (API), envoi de mails, statistiques graphiques.
-Gestion des équipements : CRUD, génération de codes-barres, impression PDF personnalisée, alerte stock, notifications email.
-Gestion des réservations : CRUD, filtrage par statut, génération de tickets PDF avec QR Code, statistiques dynamiques, paiement sécurisé via API Stripe.
-Table des Matières 📋
-Installation
-Utilisation
-Technologies
-Contributions
-Licence
-Installation
-Prérequis 📦
-Java JDK 17 ou supérieur
-https://adoptium.net
-JavaFX SDK
-https://gluonhq.com/products/javafx/
-IDE : IntelliJ IDEA / Eclipse
-Scene Builder (optionnel) : pour l’édition des interfaces FXML
-https://gluonhq.com/products/scene-builder/
-Étapes
-Clonez le repository :
+La création de l’application I-EVENTS est motivée par les défis actuels rencontrés dans l’organisation d’événements. Ce domaine, bien que central dans la vie sociale et professionnelle, souffre souvent d’un manque d’outils adaptés,
+Cette application vise à optimiser chaque aspect de l’organisation, en offrant une plateforme intuitive, collaborative et efficace. I-EVENTS ambitionne de transformer la manière dont les événements sont conçus et vécus, en simplifiant la coordination entre organisateurs, participants et prestataires.
 
-git clone https://github.com/rayssen1/I-EVENTS.git  
-cd javafx-i-events
-Importez le projet dans votre IDE (comme projet Maven ou JavaFX standard).
+**Fonctionnalités principales :**
 
-Assurez-vous que JavaFX est bien configuré dans votre IDE :
+- ** Gestion des utilisateurs ** : CRUD, tri/recherche Ajax, statistiques (Chart.js), intégration Google OAUTH, re-captcha, Mailing, pagination. 
+- ** Gestion des evenements ** : CRUD, tri/recherche Ajax, statistiques (Chart.js), intégration Gemini IA, calendrier (FullCalendar.js), pagination.
+- **Gestion des réclamations ** : CRUD, pagination, statistiques (Chart.js), intégration d’API (détection de langue, envoi d’e-mails, filtrage intelligent des messages en temps réel via IA), traitement automatisé.
+- **Gestion d'equipements ** : CRUD, pagination, statistiques (Chart.js), recherche Ajax, intégration d’API (envoi d’e-mails personalise ), code a barre , pdf (personalisé)
+- **Gestion de réservations ** : CRUD, pagination, affichage des statistiques dynamiques (Chart.js), calcul automatique du taux de confirmation, filtrage par statut, Impression du ticket personnalisé avec les données de réservation ,Paiement sécurisé via Stripe API.
 
-Définir le chemin du SDK JavaFX.
-Ajouter les modules requis (javafx.controls, javafx.fxml, etc.).
-Configurez les connexions à la base de données (fichier DatabaseConnection.java) :
+## Table des Matières 📋
 
-jdbc:mysql://localhost:3306/I-events
-Exécutez l'application depuis le fichier Main.java.
+- [Installation](#installation)  
+- [Utilisation](#utilisation)  
+- [Technologies](#technologies)  
+- [Contributions](#contributions)  
+- [Licence](#licence)
 
-Utilisation
-Accès 🔑
-L’application JavaFX est conçue pour les administrateurs et organisateurs. Elle inclut une interface de connexion avec vérification des rôles.
+---
 
-Fonctionnalités clés
-Tableau de bord :
-Statistiques dynamiques sur les utilisateurs, événements, réservations et équipements via JavaFX Charts.
+## Installation
 
-Gestion des utilisateurs :
-Ajouter, modifier, supprimer et rechercher des utilisateurs, statistiques visuelles par rôle.
+### Prérequis 📦
 
-Gestion des événements :
-Création et modification d'événements, affichage des événements avec filtres temporels, intégration API Google Calendar.
+- **XAMPP** (Apache, MySQL, PHP 8.2)  
+  https://www.apachefriends.org/index.html  
+- **Composer** (pour les dépendances Symfony)  
+  https://getcomposer.org  
 
-Réclamations :
-Traitement intelligent, détection de langue (API), réponse automatique, statistiques graphiques.
+### Étapes
 
-Équipements :
-Gestion du stock, génération automatique de PDF avec code-barres, alertes e-mails en cas de rupture.
+1. Clonez le repository :
 
-Réservations :
-Filtrage, génération de ticket PDF avec QR Code, statistiques de confirmation, paiement en ligne via Stripe API (via WebView ou intégration HTTP).
+   git clone https://github.com/rayssen1/symfonyprojet.git  
+   cd I-Events
 
-Technologies
-Langage : Java 17
-Framework UI : JavaFX
-Base de données : MySQL
-Librairies & APIs :
-Barcode4J / ZXing (codes-barres, QR codes)
-Apache PDFBox / iText (PDF)
-Gson / Jackson (JSON)
-JavaMail API (envoi d’e-mails)
-Stripe API (paiement sécurisé)
-Google Calendar API
-Contributions
-Les contributions sont bienvenues ! Voici comment vous pouvez contribuer :
+2. Si vous utilisez WAMP ou XAMPP :
+   - Placez le projet dans le dossier `www` (WAMP) ou `htdocs` (XAMPP).
+   - Démarrez Apache et MySQL depuis l'interface de WAMP/XAMPP.
 
-Forkez le dépôt.
+3. Installez les dépendances :
 
-Créez une branche :
+   composer install  
+   npm install
 
-git checkout -b feature/nom-fonctionnalite
-Committez vos changements :
+4. Configurez la base de données :
+   - Créez une base MySQL via phpMyAdmin.
+   - Modifiez le fichier `.env` :
 
-git commit -m "Ajout fonctionnalité X"
-Poussez la branche :
+     DATABASE_URL="mysql://root:@localhost:3306/I-events"
 
-git push origin feature/nom-fonctionnalite
-Ouvrez une Pull Request.
+   - Migrez les entités :
 
-Contributeurs 👥
-Kliche Alaeddine – Développement de l’interface utilisateur
-Draouil Rayssen – Développement de la gestion des événements
-Mohamed Rabeh – Développement des modules de réclamation
-Amal Trad – Développement de la gestion des équipements
-Baya Khouini – Gestion des réservations et paiement
-Licence
-Ce projet est sous licence ROC. Voir le fichier LICENSE pour plus d'informations.
+     php bin/console doctrine:migrations:migrate
 
-Topics GitHub
-#javafx #java #desktopapp #gestion-evenements #chart #pdf #barcode #stripe #api #mysql #calendar
+5. Lancez le serveur :
+
+   symfony serve
+
+---
+
+## Utilisation
+
+### Accès 🔑
+
+- Frontend : http://localhost:8000  
+- Admin : http://localhost:8000/Dashboard (identifiants à configurer)
+
+### Fonctionnalités clés
+
+- **Réservation de evenements :**  
+  Sélectionnez un evenement, vérifiez les disponibilités via Ajax, générez un ticket PDF avec QR code.
+
+- **Gestion des evenements :**  
+  creation des evenements avec la synchronisation via google calendar - **Tableau de bord :**  
+  Visualisez les statistiques (Chart.js) et les calendriers (FullCalendar.js).
+-** Authentification via Google OAuth et creation du compte avec vérification reCAPTCHA pour plus de sécurité. Envoi d’e-mails de confirmation et de notifications automatisées.
+ - **Gestion des réclamations :**  
+Soumission et suivi des réclamations avec filtrage intelligent en temps réel via IA, validation automatique des messages rédigés en anglais grâce à une API de détection de langue, envoi de notifications par e-mail, traitement automatisé des contenus, et affichage des statistiques dynamiques (Chart.js).
+-  **Gestion des équipements :**  
+Soumission et suivi des équipements avec envoi de notifications par e-mail du stock manquants , traitement automatisé des contenus, et affichage des statistiques dynamiques (Chart.js).
+-  **Gestion des réservations :** 
+Suivi des réservations (confirmées, annulées, en attente), filtrage par statut, calcul du taux de confirmation, génération de tickets à imprimer, et intégration du paiement par Stripe.
+
+
+  **Tableau de bord :**  
+  Visualisez les statistiques des utilisateur et des session (Chart.js)
+---
+
+## Technologies
+
+- **Backend** : Symfony 6.4, PHP 8.2,Ajax,API GoogleCalendar  
+- **Frontend** : Twig, Ajax, Chart.js,API Gemini
+- **Base de données** : MySQL  
+- **Outils** : XAMPP, Composer, WebSocket
+
+---
+
+## Contributions
+
+Les contributions sont bienvenues ! Suivez ces étapes :
+
+1. Forkez le projet.
+2. Créez une branche :
+
+   git checkout -b feature/nouvelle-fonctionnalite
+
+3. Committez vos modifications :
+
+   git commit -m "Ajout d'une fonctionnalité"
+
+4. Poussez vers la branche :
+
+   git push origin feature/nouvelle-fonctionnalite
+
+5. Ouvrez une Pull Request.
+
+### Contributeurs 👥
+
+Nous remercions tous ceux qui ont contribué à ce projet !  
+Les personnes suivantes ont contribué à ce projet en ajoutant des fonctionnalités, en corrigeant des bugs ou en améliorant la documentation :
+
+- [Kliche Alaeddine](https://github.com/rayssen1) – Développement de gestion Utilisateur 
+- [Draouil Rayssen](https://github.com/rayssen1) – Développement de gestion Evenements
+- [Mohamed Rabeh](https://github.com/MohamedRabeh1) – Développement de la gestion des réclamations  
+- [Amal Trad](https://github.com/AmalTrad16) – Développement de la gestion des équipements
+- [Baya Khouini](https://github.com/Batta0102) – Développement de la gestion des réservations
+
+---
+
+## Licence
+
+Ce projet est sous licence ROC. Pour plus de détails, consultez le fichier [LICENSE](./LICENSE).
+
+---
+
+## Topics GitHub
+
+#symfony #php #sport #webapp #ajax #chartjs #websocket #python #qrcode #stripe 
